@@ -145,8 +145,8 @@ class ReticulumProxyHandler(BaseHTTPRequestHandler):
                     server_identity,
                     RNS.Destination.OUT,
                     RNS.Destination.SINGLE,
-                    "rip",
-                    "server"
+                    "rns",
+                    "relay"
                 )
                 t_link = RNS.Link(dest[destination_hexhash]['destination'])
                 t_link.set_link_established_callback(dest[destination_hexhash]['link_started'])
@@ -166,6 +166,8 @@ def start_local_proxy(port, identify = None):
         identity = identify
     else:
         identity = RNS.Identity()
+    
+    print("destination: ", RNS.Destination.hash(identity, "rns", "relay").hex())
 
     global proxy_server
 
