@@ -96,7 +96,7 @@ class ReticulumProxyHandler(BaseHTTPRequestHandler):
 
     def req_and_res(self, data=None):
         try:
-            destination_hexhash = self.headers.get("X-Iden", "")
+            destination_hexhash = self.headers.get("X-id", "")
             if not destination_hexhash:
                 self.send_response(400)
                 self.send_header("Content-type", "text/html")
